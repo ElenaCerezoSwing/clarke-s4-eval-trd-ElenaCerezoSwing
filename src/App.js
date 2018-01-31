@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from './components/Input';
 import './App.css';
 
 const HARRYPOTTERAPI = 'http://hp-api.herokuapp.com/api/characters';
@@ -38,10 +39,13 @@ class App extends Component {
 
     return (
       <div>
-      <input type="text" onChange={this.UpdateText} value={this.state.filterText}/>
+      <h1>My Harry Potter Charachters</h1>
+      <Input type="text" onChange={this.UpdateText} value={this.state.filterText}/>
       <ul>{
         charactersStore.filter((character) =>{
-        return character.name.toLowerCase().includes(this.state.filterText.toLowerCase());
+          const NameToLowerCase = character.name.toLowerCase();
+          const UpdateToLowerCase = this.state.filterText.toLowerCase();
+          return NameToLowerCase.includes(UpdateToLowerCase);
         })
         .map((character, index)=>{
           return (
@@ -57,9 +61,9 @@ class App extends Component {
       }</ul>
       </div>
     );
-    }
+  }
 
-    componentDidMount(){
+  componentDidMount(){
     this.fetchWizardsCharacters();
   }
 }
