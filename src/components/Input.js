@@ -7,7 +7,7 @@ class Input extends Component {
 
   render(){
     return (
-      <input type="text" onChange={this.props.onChange} value={this.props.value}/>
+      <input className= "input-height" type="text" onChange={this.props.onChange} value={this.props.value}/>
     );
   }
 }

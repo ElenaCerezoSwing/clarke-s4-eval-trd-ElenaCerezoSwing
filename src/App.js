@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Input from './components/Input';
 import './App.css';
 
 const HARRYPOTTERAPI = 'http://hp-api.herokuapp.com/api/characters';
@@ -39,31 +38,29 @@ class App extends Component {
 
     return (
       <div>
-      <h1>My Harry Potter Charachters</h1>
-      <Input type="text" onChange={this.UpdateText} value={this.state.filterText}/>
-      <ul>{
-        charactersStore.filter((character) =>{
-          const NameToLowerCase = character.name.toLowerCase();
-          const UpdateToLowerCase = this.state.filterText.toLowerCase();
-          return NameToLowerCase.includes(UpdateToLowerCase);
-        })
-        .map((character, index)=>{
-          return (
-            <div key={index}>
-            <img src={character.image} alt={character.name} width='200px' height= '300px'/>
-            <li><h3>{character.name}</h3></li>
-            <li>House: {character.house}</li>
-            <li>{character.alive ? '❤' : 'X' }</li>
-            </div>
-          );
-        })
+        <h2>My Harry Potter characters</h2>
+        <input className= "input-height" type="text" onChange={this.UpdateText} value={this.state.filterText}/>
+        <ul className="display-characters">{
+          charactersStore.filter((character) =>{
+          return character.name.toLowerCase().includes(this.state.filterText.toLowerCase());
+          })
+          .map((character, index)=>{
+            return (
+              <li key={index}>
+                <img src={character.image} alt={character.name} className="image-size"/>
+                <h5>{character.name}</h5>
+                <p>House: {character.house}</p>
+                <p>Alive? {character.alive ? '❤' : 'X' }</p>
+              </li>
+            );
+          })
 
-      }</ul>
+        }</ul>
       </div>
     );
-  }
+    }
 
-  componentDidMount(){
+    componentDidMount(){
     this.fetchWizardsCharacters();
   }
 }

@@ -1,11 +1,70 @@
-.App {
+*{
+  box-sizing: border-box;
+
+}
+
+
+
+body{
+  background-image: url("hogwarts.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  margin:0;
+  padding: 40px;
   text-align: center;
+  color:white;
+  font-family: 'Harry Potter';
 }
 
 li {
-list-style: none;
+  list-style: none;
 }
+
+h2, input, ul{
+  margin:0;
+  padding:0;
+}
+
+
+p, h5{
+  margin:0;
+  padding: 5px;
+}
+.input-height{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  margin:20px auto;
+
+}
+.image-size{
+  width: 100%;
+  object-fit: cover;
+  height: 100px;
+}
+
 .display-characters {
-display: grid;
-grid-template-columns: repeat (5, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+
+}
+@media all and (min-width: 768px){
+  .display-characters{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .image-size{
+    height:200px;
+  }
+}
+
+@media all and (min-width: 1024px){
+  .display-characters{
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .image-size{
+    height:300px;
+  }
 }
