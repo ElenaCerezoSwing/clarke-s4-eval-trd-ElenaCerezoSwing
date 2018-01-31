@@ -36,6 +36,7 @@ class App extends Component {
     const { charactersStore } = this.state;
     const { filterText } = this.state;
 
+
     return (
       <div>
         <h2>My Harry Potter characters</h2>
@@ -63,6 +64,8 @@ class App extends Component {
     componentDidMount(){
     this.fetchWizardsCharacters();
   }
+
+
 }
 
 export default App;
